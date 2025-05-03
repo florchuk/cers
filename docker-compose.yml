@@ -1,0 +1,11 @@
+services:
+  cron:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    env_file:
+      - docker/.env
+    working_dir: /opt/cers
+    restart: always
+    volumes:
+      - ./volumes/var/log/cers:/var/log/cers

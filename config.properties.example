@@ -1,0 +1,11 @@
+# List of scrapers.
+CERS_CLASS_NAMES=\
+    ua.nazarii.cers.scrapers.NBUScraper,\
+    ua.nazarii.cers.scrapers.PrivatBankAtBranchesScraper,\
+    ua.nazarii.cers.scrapers.UkrSibBankAtBranchesScraper,\
+    ua.nazarii.cers.scrapers.UkrSibBankOnlineScraper
+
+# API connection properties (better use environment variables for these).
+CERS_API_URL=
+CERS_API_USERNAME=
+CERS_API_PASSWORD=
