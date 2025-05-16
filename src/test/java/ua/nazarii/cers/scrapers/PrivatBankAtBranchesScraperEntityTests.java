@@ -73,12 +73,9 @@ public class PrivatBankAtBranchesScraperEntityTests {
                         .sorted(Comparator.comparing(RateDto::getUnitCurrencyAlphabeticCode))
                         .toList();
 
-        // Synchronizing when was created and when was updated the Dtos (for expected and tested response data).
+        // Synchronizing when was created the Dtos (for expected and tested response data).
         this.expectedRateDtos.get(0).setCreatedAt(actualRateDtos.get(0).getCreatedAt());
-        this.expectedRateDtos.get(0).setUpdatedAt(actualRateDtos.get(0).getUpdatedAt());
-
         this.expectedRateDtos.get(1).setCreatedAt(actualRateDtos.get(1).getCreatedAt());
-        this.expectedRateDtos.get(1).setUpdatedAt(actualRateDtos.get(1).getUpdatedAt());
 
         // Expected and tested response data should be equal.
         assertEquals(this.expectedRateDtos, actualRateDtos);

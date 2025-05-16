@@ -36,10 +36,6 @@ public class RateDto implements Serializable {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime createdAt;
 
-    @JsonProperty(value = "updated_at")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private LocalDateTime updatedAt;
-
     public RateDto() {
         //
     }
@@ -62,7 +58,6 @@ public class RateDto implements Serializable {
         LocalDateTime createdAt = LocalDateTime.now().truncatedTo(ChronoUnit.MICROS);
 
         this.createdAt = createdAt;
-        this.updatedAt = LocalDateTime.from(createdAt);
     }
 
     public RateDto(
@@ -72,8 +67,7 @@ public class RateDto implements Serializable {
             String rateCurrencyAlphabeticCode,
             Double buyRate,
             Double saleRate,
-            LocalDateTime createdAt,
-            LocalDateTime updatedAt
+            LocalDateTime createdAt
     ) {
         this.exchangerId = exchangerId;
         this.unit = unit;
@@ -82,7 +76,6 @@ public class RateDto implements Serializable {
         this.buyRate = buyRate;
         this.saleRate = saleRate;
         this.createdAt = LocalDateTime.from(createdAt).truncatedTo(ChronoUnit.MICROS);
-        this.updatedAt = LocalDateTime.from(updatedAt).truncatedTo(ChronoUnit.MICROS);
     }
 
     public Integer getExchangerId() {
@@ -113,10 +106,6 @@ public class RateDto implements Serializable {
         return this.createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return this.updatedAt;
-    }
-
     public void setExchangerId(Integer exchangerId) {
         this.exchangerId = exchangerId;
     }
@@ -145,10 +134,6 @@ public class RateDto implements Serializable {
         this.createdAt = LocalDateTime.from(createdAt).truncatedTo(ChronoUnit.MICROS);
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = LocalDateTime.from(updatedAt).truncatedTo(ChronoUnit.MICROS);
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -167,8 +152,7 @@ public class RateDto implements Serializable {
                 && Objects.equals(this.rateCurrencyAlphabeticCode, rateDto.getRateCurrencyAlphabeticCode())
                 && Objects.equals(this.buyRate, rateDto.getBuyRate())
                 && Objects.equals(this.saleRate, rateDto.getSaleRate())
-                && Objects.equals(this.createdAt, rateDto.getCreatedAt())
-                && Objects.equals(this.updatedAt, rateDto.getUpdatedAt());
+                && Objects.equals(this.createdAt, rateDto.getCreatedAt());
     }
 
     @Override
@@ -182,7 +166,6 @@ public class RateDto implements Serializable {
         result = 31 * result + (this.buyRate == null ? 0 : this.buyRate.hashCode());
         result = 31 * result + (this.saleRate == null ? 0 : this.saleRate.hashCode());
         result = 31 * result + (this.createdAt == null ? 0 : this.createdAt.hashCode());
-        result = 31 * result + (this.updatedAt == null ? 0 : this.updatedAt.hashCode());
 
         return result;
     }
